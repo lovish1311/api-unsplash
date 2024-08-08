@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     idTextView.text = "Error: ${response.message()}"
                     slugTextView.text = "Error: ${response.message()}"
-                    imageView.setImageResource(R.drawable.ic_launcher_foreground)
+                    imageView.setImageResource(R.drawable.ic_launcher_foreground)//
 
 
                 }
