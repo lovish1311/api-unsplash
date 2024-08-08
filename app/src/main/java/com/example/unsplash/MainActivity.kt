@@ -9,13 +9,15 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var textView: TextView
+    private lateinit var idTextView: TextView
+    private lateinit var slugTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        textView = findViewById(R.id.textView)
+        idTextView = findViewById(R.id.textView)
+        slugTextView=findViewById(R.id.textView2)
 
         fetchRandomPhoto()
     }
@@ -27,21 +29,27 @@ class MainActivity : AppCompatActivity() {
                 response: Response<UnsplashPhoto>
             ) {
                 if (response.isSuccessful) {
-                    val photo = response.body()
-                    if (photo != null) {
+                    val apiData = response.body()
+                    if (apiData != null) {
                         // Get the ID of the random photo
-                        val photoId = photo.id
-                        textView.text = "Photo ID: $photoId"
+                        val Id = apiData.id
+                        val slugId = apiData.slug
+                        idTextView.text = "Photo ID: $Id"
+                        slugTextView.text="slug: $slugId"
                     } else {
-                        textView.text = "No photo data available"
+                        idTextView.text = "No photo data available"
+                        slugTextView.text = "No photo data available"
                     }
                 } else {
-                    textView.text = "Error: ${response.message()}"
+                    idTextView.text = "Error: ${response.message()}"
+                    slugTextView.text = "Error: ${response.message()}"
+
                 }
             }
 
             override fun onFailure(call: Call<UnsplashPhoto>, t: Throwable) {
-                textView.text = "Error: ${t.message}"
+                idTextView.text = "Error: ${t.message}"
+                slugTextView.text = "Error: ${t.message}"
             }
         })
     }
