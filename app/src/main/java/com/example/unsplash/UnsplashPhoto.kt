@@ -9,3 +9,7 @@ data class UnsplashPhoto(
 data class Urls(
     val regular: String
 )
+data class Post(val userId: Int,
+                val id: Int,
+                val title: String,
+                val body: String)
