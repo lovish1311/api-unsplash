@@ -1,6 +1,7 @@
 package com.example.unsplash
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -26,6 +27,13 @@ class MainActivity2 : AppCompatActivity() {
         createPostButton.setOnClickListener {
             createNewPost()
         }
+        // setting logic for button_activity3
+        val buttonActivity3: Button = findViewById(R.id.button_activity3)
+        buttonActivity3.setOnClickListener {
+            val intent = Intent(this, MainActivity3::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private fun createNewPost() {

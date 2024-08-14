@@ -13,3 +13,7 @@ data class Post(val userId: Int,
                 val id: Int,
                 val title: String,
                 val body: String)
+data class studentDetails(
+    val phoneNumber: String?,
+    val rollNo: String?
+)
